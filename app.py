@@ -12,7 +12,8 @@ st.markdown("Analyze player movement, events, and hotspots on game maps")
 def load_data():
     con = duckdb.connect()
     df = con.execute("""
-        SELECT * FROM read_parquet('player_data/February_*/*')
+        SELECT * FROM read_parquet('player_data/February_*/*.parquet')
+LIMIT 200000
     """).df()
 
     def clean_event(value):
